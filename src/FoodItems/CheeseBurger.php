@@ -6,8 +6,14 @@ namespace FoodServiceSimulation\FoodItems;
 
 class CheeseBurger extends FoodItem
 {
-	private const CATEGORY = 'Burger';
-	protected static function getCategory(): string
+	private const CATEGORY = 'CheeseBurger';
+
+	public function __construct()
+	{
+		parent::__construct("Cheese Burger", "Juicy beef patty with melted cheese", 8.99);
+	}
+
+	public static function getCategory(): string
 	{
 		return self::CATEGORY;
 	}

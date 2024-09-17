@@ -9,9 +9,9 @@ abstract class FoodItem
 {
 	protected string $name;
 	protected string $description;
-	protected int $price;
+	protected float $price;
 
-	public function __construct(string $name, string $description, int $price)
+	public function __construct(string $name, string $description, float $price)
 	{
 		$this->name = $name;
 		$this->description = $description;
@@ -19,4 +19,29 @@ abstract class FoodItem
 	}
 
 	abstract protected static function getCategory(): string;
+
+	public function getName(): string
+	{
+		return $this->name;
+	}
+
+	/**
+	 * Get the description of the food item
+	 *
+	 * @return string
+	 */
+	public function getDescription(): string
+	{
+		return $this->description;
+	}
+
+	/**
+	 * Get the price of the food item
+	 *
+	 * @return float
+	 */
+	public function getPrice(): float
+	{
+		return $this->price;
+	}
 }
