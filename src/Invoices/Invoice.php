@@ -40,4 +40,12 @@ class Invoice
 	{
 		return $this->foodOrder;
 	}
+
+	public function printInvoice()
+	{
+		echo str_repeat('-', 40) . "\n";
+		echo "Date: {$this->orderTime}\n";
+		echo "Final Price: $" . number_format($this->finalPrice, 2) . "\n";
+		echo str_repeat('-', 40) . "\n";
+	}
 }
