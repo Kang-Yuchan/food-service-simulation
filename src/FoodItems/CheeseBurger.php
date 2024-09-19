@@ -10,7 +10,7 @@ class CheeseBurger extends FoodItem
 
 	public function __construct()
 	{
-		parent::__construct("Cheese Burger", "Juicy beef patty with melted cheese", 8.99);
+		parent::__construct("Cheese Burger", "Juicy beef patty with melted cheese", 8.99, 2);
 	}
 
 	public static function getCategory(): string

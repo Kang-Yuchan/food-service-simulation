@@ -10,38 +10,35 @@ abstract class FoodItem
 	protected string $name;
 	protected string $description;
 	protected float $price;
+	protected int $cookingTimeMinutes;
 
-	public function __construct(string $name, string $description, float $price)
+	public function __construct(string $name, string $description, float $price, int $cookingTimeMinutes)
 	{
 		$this->name = $name;
 		$this->description = $description;
 		$this->price = $price;
+		$this->cookingTimeMinutes = $cookingTimeMinutes;
 	}
 
-	abstract protected static function getCategory(): string;
+	abstract public static function getCategory(): string;
 
 	public function getName(): string
 	{
 		return $this->name;
 	}
 
-	/**
-	 * Get the description of the food item
-	 *
-	 * @return string
-	 */
 	public function getDescription(): string
 	{
 		return $this->description;
 	}
 
-	/**
-	 * Get the price of the food item
-	 *
-	 * @return float
-	 */
 	public function getPrice(): float
 	{
 		return $this->price;
+	}
+
+	public function getCookingTimeMinutes(): int
+	{
+		return $this->cookingTimeMinutes;
 	}
 }

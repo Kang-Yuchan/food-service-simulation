@@ -10,7 +10,7 @@ class Spaghetti extends FoodItem
 
 	public function __construct()
 	{
-		parent::__construct("Spaghetti", "Classic Italian pasta with tomato sauce", 9.99);
+		parent::__construct("Spaghetti", "Classic Italian pasta with tomato sauce", 9.99, 3);
 	}
 
 

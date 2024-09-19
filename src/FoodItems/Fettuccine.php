@@ -10,10 +10,10 @@ class Fettuccine extends FoodItem
 
 	public function __construct()
 	{
-		parent::__construct("Fettuccine Alfredo", "Creamy fettuccine pasta with Parmesan cheese", 11.99);
+		parent::__construct("Fettuccine Alfredo", "Creamy fettuccine pasta with Parmesan cheese", 11.99, 3);
 	}
 
-	protected static function getCategory(): string
+	public static function getCategory(): string
 	{
 		return self::CATEGORY;
 	}
