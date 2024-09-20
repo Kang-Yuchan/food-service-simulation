@@ -35,13 +35,36 @@ $saizeriya = new Restaurant(
 	]
 );
 
-$interestedTastesMap = [
-	"Margherita" => 1,
-	"CheeseBurger" => 2,
-	"Spaghetti" => 1
-];
+function generateRandomInterestedTastes(array $availableCategories, int $minItems = 1, int $maxItems = 3): array
+{
+	$numItems = rand($minItems, $maxItems);
+	$selectedCategories = array_rand(array_flip($availableCategories), $numItems);
 
-$Tom = new Customer("Tom", 20, "Saitama", $interestedTastesMap);
+	if (!is_array($selectedCategories)) {
+		$selectedCategories = [$selectedCategories];
+	}
 
-$invoice = $Tom->order($saizeriya);
+	$interestedTastesMap = [];
+	foreach ($selectedCategories as $category) {
+		$interestedTastesMap[$category] = rand(1, 3);  // 1から3の間でランダムな数量
+	}
+
+	return $interestedTastesMap;
+}
+
+$availableCategories = ['Margherita', 'CheeseBurger', 'Spaghetti', 'HawaiianPizza', 'Fettuccine'];
+
+$interestedTastesMap = generateRandomInterestedTastes($availableCategories);
+
+$names = ['Tom', 'Alice', 'Bob', 'Carol', 'Dave'];
+$randomName = $names[array_rand($names)];
+
+$age = rand(18, 60);
+
+$cities = ['Tokyo', 'Osaka', 'Nagoya', 'Sapporo', 'Fukuoka'];
+$randomCity = $cities[array_rand($cities)];
+
+$customer = new Customer($randomName, $age, $randomCity, $interestedTastesMap);
+
+$invoice = $customer->order($saizeriya);
 $invoice->printInvoice();
