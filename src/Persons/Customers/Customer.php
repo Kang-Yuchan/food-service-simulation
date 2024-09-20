@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace FoodServiceSimulation\Persons;
+namespace FoodServiceSimulation\Persons\Customers;
 
 use FoodServiceSimulation\Persons\Person;
 use FoodServiceSimulation\Restaurants\Restaurant;
 use FoodServiceSimulation\Invoices\Invoice;
+use FoodServiceSimulation\FoodItems\FoodItem;
 
 class Customer extends Person
 {
@@ -35,7 +36,34 @@ class Customer extends Person
 
 	public function order(Restaurant $restaurant): Invoice
 	{
-		$categories = array_keys($this->interestedCategories);
-		return $restaurant->order($categories);
+		echo $this->name . " wanted to eat " . implode(', ', array_keys($this->interestedCategories)) . "\n";
+		$exisInterestedItemsSummary = $this->getInterestedItemsSummary($restaurant);
+		echo $this->name . " was looking at the menu, and ordered " . $exisInterestedItemsSummary . "\n";
+		return $restaurant->order($this->interestedCategories);
+	}
+
+	public function getInterestedItemsSummary(Restaurant $restaurant): string
+	{
+		$menu = $restaurant->getMenu();
+		$interestedItemsSummary = [];
+
+		foreach ($this->interestedCategories as $category => $quantity) {
+			$menuItem = $this->findMenuItemByCategory($menu, $category);
+			if ($menuItem) {
+				$interestedItemsSummary[] = "{$menuItem::getCategory()} x {$quantity}";
+			}
+		}
+
+		return implode(', ', $interestedItemsSummary);
+	}
+
+	private function findMenuItemByCategory(array $menu, string $category): ?FoodItem
+	{
+		foreach ($menu as $item) {
+			if ($item::getCategory() === $category) {
+				return $item;
+			}
+		}
+		return null;
 	}
 }
