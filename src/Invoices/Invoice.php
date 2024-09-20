@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FoodServiceSimulation\Inovoices;
+namespace FoodServiceSimulation\Invoices;
 
 use FoodServiceSimulation\FoodOrders\FoodOrder;
 

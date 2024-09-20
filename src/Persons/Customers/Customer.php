@@ -6,7 +6,7 @@ namespace FoodServiceSimulation\Persons;
 
 use FoodServiceSimulation\Persons\Person;
 use FoodServiceSimulation\Restaurants\Restaurant;
-use FoodServiceSimulation\Inovoices\Invoice;
+use FoodServiceSimulation\Invoices\Invoice;
 
 class Customer extends Person
 {
