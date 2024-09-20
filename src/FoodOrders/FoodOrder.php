@@ -29,9 +29,18 @@ class FoodOrder
 
 	public function getTotalPrice(): float
 	{
-		$all_foods = $this->items;
-		return array_reduce($all_foods, function ($total, FoodItem $item) {
+		return array_reduce($this->items, function ($total, FoodItem $item) {
 			return $total + $item->getPrice();
 		}, 0.0);
+	}
+
+	public function getItemCounts(): array
+	{
+		$counts = [];
+		foreach ($this->items as $item) {
+			$key = $item->getName(); // または他の一意の識別子
+			$counts[$key] = ($counts[$key] ?? 0) + 1;
+		}
+		return $counts;
 	}
 }
